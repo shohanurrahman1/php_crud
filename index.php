@@ -62,13 +62,34 @@
                                                 <div class="action-btn">
                                                     <ul>
                                                         <li>
-                                                            <a href=""><i class="fa-regular fa-pen-to-square edit"></i></a>
+                                                            <a href="index.php?do=Edit&e_id=<?php echo $id;?>"><i class="fa-regular fa-pen-to-square edit"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href=""><i class="fa-regular fa-trash-can trash"></i></a>
+                                                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-trash-can trash"></i></a>
                                                         </li>
                                                     </ul>
                                                 </div>
+
+                                                <!-- START: MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                                                <!-- END: MODAL -->
                                               </td>
                                             </tr>
                                         <?php }
@@ -93,6 +114,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            <h1 class="text-center pb-5">Register new Student Info</h1>
 
                             <!-- START: FORM -->
                             <form action="index.php?do=Store" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
@@ -198,7 +221,109 @@
         }
 
         else if ( $do == "Edit" ){
-            
+            if (isset($_GET['e_id'])) {
+                $edit_id = $_GET['e_id'];
+
+                $edit_sql = "SELECT * FROM students WHERE id='$edit_id'";
+                $edit_query = mysqli_query($db, $edit_sql);
+
+                while ($row = mysqli_fetch_assoc($edit_query)) {
+                    $id             = $row['id'];
+                    $fullname       = $row['fullname'];
+                    $father         = $row['father'];
+                    $mother         = $row['mother'];
+                    $email          = $row['email'];
+                    $phone          = $row['phone'];
+                    $status         = $row['status'];
+                    $address        = $row['address'];
+                    ?>
+                    <section class="py-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <h2 class="text-center pb-5">Edit <span style="color: green;"><?php echo $fullname; ?></span> info <i class="fa-solid fa-user-pen"></i></h2>
+
+                                    <!-- START: FORM -->
+                                    <form action="index.php?do=Update" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="name">Full Name</label>
+                                                    <input type="text" name="name" id="name" class="form-control" required autocomplete="off" value="<?php echo $fullname; ?>">
+                                                    <div class="invalid-feedback">
+                                                      Please enter full name.
+                                                    </div>
+                                                </div>
+
+                                               <div class="mb-3">
+                                                <label for="fname">Fathers Name</label>
+                                                <input type="text" name="father" id="fname" class="form-control" required autocomplete="off" value="<?php echo $father; ?>">
+                                                <div class="invalid-feedback">
+                                                  Please enter fathers name.
+                                                </div>
+                                              </div>
+
+                                              <div class="mb-3">
+                                                <label for="mname">Mothers Name</label>
+                                                <input type="text" name="mother" id="mname" class="form-control" required autocomplete="off" value="<?php echo $mother; ?>">
+                                                <div class="invalid-feedback">
+                                                  Please enter mothers name.
+                                                </div>
+                                              </div>
+
+                                              <div class="mb-3">
+                                                <label for="email">Email Address</label>
+                                                <input type="email" name="email" id="email" class="form-control" required autocomplete="off" value="<?php echo $email; ?>">
+                                                <div class="invalid-feedback" >
+                                                  Please enter email address.
+                                                </div>
+                                              </div>
+
+                                              <div class="mb-3">
+                                                <label for="phone">Phone No.</label>
+                                                <input type="tel" name="phone" id="phone" class="form-control" required autocomplete="off" value="<?php echo $phone; ?>">
+                                                <div class="invalid-feedback">
+                                                  Please enter phone no.
+                                                </div>
+                                              </div>
+
+                                              <div class="mb-3">
+                                                <label for="">Status</label>
+                                                <select class="form-select" name="status" aria-label="">
+                                                  <option>Please Select the Status</option>
+                                                  <option <?php if ($status == 1) { echo "selected"; } ?>>Active</option>
+                                                  <option <?php if ($status == 0) { echo "selected"; } ?>>InActive</option>
+                                                </select>
+                                              </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">                                        
+                                                <div class="mb-3">
+                                                    <label for="">Present Address</label>
+                                                    <textarea name="address" id="editor1" class="form-control" required autocomplete="off" cols="30" rows="3"><?php echo $address; ?></textarea>
+                                                    <div class="invalid-feedback">
+                                                      Please enter your address.
+                                                    </div>
+                                                </div>                                          
+
+                                                <div class="mb-3">
+                                                    <div class="d-grid gap-2">
+                                                      <input type="hidden" name="update_id" value="<?php echo $id; ?>">
+                                                      <input type="submit" name="update" class="btn btn-success" value="Update Student">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- END: FORM -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                <?php }
+            }
         }
 
         else if ( $do == "Update" ){
