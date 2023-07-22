@@ -21,3 +21,24 @@
         color: red;
 }
 
+a.nav-link.active {
+    font-size: 26px;
+    background: azure;
+    border-radius: 12px;
+    font-weight: 600;
+    margin: 0px 20px;
+}
+
+a.nav-link {
+    font-size: 26px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin: 0px 20px;
+    transition: 0.5s;
+}
+
+a.nav-link:hover{
+    background: azure;
+    border-radius: 12px;
+    font-weight: 600;
+}
