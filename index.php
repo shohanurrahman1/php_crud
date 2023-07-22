@@ -99,7 +99,7 @@
 
                                       <div class="mb-3">
                                         <label for="">Status</label>
-                                        <select class="form-select" aria-label="">
+                                        <select class="form-select" name="status" aria-label="">
                                           <option value="1">Please Select the Status</option>
                                           <option value="1">Active</option>
                                           <option value="0">InActive</option>
@@ -133,18 +133,32 @@
         <?php }
 
         else if ( $do == "Store" ){
+            if (isset($_POST['add'])) {
+
+                $name       = mysqli_real_scape_string($db, $_POST['name']);     
+                $father     = mysqli_real_scape_string($db, $_POST['father']);     
+                $mother     = mysqli_real_scape_string($db, $_POST['mother']);     
+                $email      = mysqli_real_scape_string($db, $_POST['email']);     
+                $phone      = mysqli_real_scape_string($db, $_POST['phone']);     
+                $status     = mysqli_real_scape_string($db, $_POST['status']);     
+                $address    = mysqli_real_scape_string($db, $_POST['address']);      
+
+            }    
+        }
+
+        else if ( $do == "Edit" ){
             
         }
 
-        else if (){
+        else if ( $do == "Update" ){
+
+        }
+
+        else if ( $do == "Trash" ){
             
         }
 
-        else if (){
-
-        }
-
-        else if (){
+        else if ( $do == "Delete" ){
             
         }
     ?>
