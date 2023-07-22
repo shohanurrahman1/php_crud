@@ -96,10 +96,8 @@
                   Please enter phone no.
                 </div>
               </div>
-                    </div>
 
-                    <div class="col-lg-6">
-                        <div class="mb-3">
+              <div class="mb-3">
                             <label for="">Status</label>
                             <select class="form-select" aria-label="">
                               <option value="1">Please Select the Status</option>
@@ -107,6 +105,10 @@
                               <option value="0">InActive</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        
                         <div class="mb-3">
                 <label for="">Present Address</label>
                 <textarea name="address" id="editor1" class="form-control" required autocomplete="off" cols="30" rows="3"></textarea>
