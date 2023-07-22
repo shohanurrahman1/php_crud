@@ -18,21 +18,51 @@
                                     <tr>
                                       <th scope="col">#Sl.</th>
                                       <th scope="col">Full Name</th>
+                                      <th scope="col">Fathers Name</th>
+                                      <th scope="col">Mothers Name</th>
                                       <th scope="col">Email Address</th>
                                       <th scope="col">Phone No.</th>
-                                      <th scope="col">Present Address</th>
+                                      <th scope="col">Address</th>
+                                      <th scope="col">Status</th>
+                                      <th scope="col">Join Date</th>
                                       <th scope="col">Action</th>
                                     </tr>
                                   </thead>
+
                                   <tbody>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>mdo</td>
-                                      <td>mdo</td>
-                                      <td>mdo</td>
-                                    </tr>
+
+                                    <?php  
+                                        $read_sql = "SELECT * FROM students";
+                                        $read_data = mysqli_query($db, $read_sql);
+                                        $i = 0;
+
+                                        while ($row = mysqli_fetch_assoc($read_data)) {
+                                            $id             = $row['id'];
+                                            $fullname       = $row['fullname'];
+                                            $father         = $row['father'];
+                                            $mother         = $row['mother'];
+                                            $email          = $row['email'];
+                                            $phone          = $row['phone'];
+                                            $status         = $row['status'];
+                                            $address        = $row['address'];
+                                            $join_date      = $row['join_date'];
+                                            $i++;
+                                            ?>
+                                            <tr>
+                                              <th scope="row"><?php echo $i; ?></th>
+                                              <td><?php echo $fullname; ?></td>
+                                              <td><?php echo $father; ?></td>
+                                              <td><?php echo $mother; ?></td>
+                                              <td><?php echo $email; ?></td>
+                                              <td><?php echo $phone; ?></td>
+                                              <td><?php echo $address; ?></td>
+                                              <td><?php echo $status; ?></td>
+                                              <td><?php echo $join_date; ?></td>
+                                              <td>sds</td>
+                                            </tr>
+                                        <?php }
+                                    ?>
+                                    
                                   </tbody>
                                 </table>
                             </div>
