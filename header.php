@@ -13,5 +13,8 @@
     <!-- Ck Editor Cdn Link -->
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
+    <!-- Font-awesome CDN link Here -->
+    <script src="https://kit.fontawesome.com/0c66e46c25.js" crossorigin="anonymous"></script>
+
   </head>
   <body>
