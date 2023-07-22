@@ -54,7 +54,7 @@
                         <div class="col-lg-12">
 
                             <!-- START: FORM -->
-                            <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <form action="index.php?do=Store" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -131,6 +131,22 @@
                 </div>
             </section>
         <?php }
+
+        else if ( $do == "Store" ){
+            
+        }
+
+        else if (){
+            
+        }
+
+        else if (){
+
+        }
+
+        else if (){
+            
+        }
     ?>
     
 
