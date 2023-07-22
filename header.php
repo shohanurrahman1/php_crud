@@ -16,5 +16,8 @@
     <!-- Font-awesome CDN link Here -->
     <script src="https://kit.fontawesome.com/0c66e46c25.js" crossorigin="anonymous"></script>
 
+    <!-- Style.css added -->
+    <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body>
