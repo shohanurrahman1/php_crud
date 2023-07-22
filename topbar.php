@@ -13,7 +13,7 @@
                               <a class="nav-link" href="index.php?do=Add">Create New Student</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="index.php?do=Add">Trash</a>
+                              <a class="nav-link" href="index.php?do=ManageTrash">Trash</a>
                             </li>
                           </ul>
                         </div>
