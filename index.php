@@ -135,15 +135,25 @@
         else if ( $do == "Store" ){
             if (isset($_POST['add'])) {
 
-                $name       = mysqli_real_scape_string($db, $_POST['name']);     
-                $father     = mysqli_real_scape_string($db, $_POST['father']);     
-                $mother     = mysqli_real_scape_string($db, $_POST['mother']);     
-                $email      = mysqli_real_scape_string($db, $_POST['email']);     
-                $phone      = mysqli_real_scape_string($db, $_POST['phone']);     
-                $status     = mysqli_real_scape_string($db, $_POST['status']);     
-                $address    = mysqli_real_scape_string($db, $_POST['address']);      
+                $name       = mysqli_real_escape_string($db, $_POST['name']);     
+                $father     = mysqli_real_escape_string($db, $_POST['father']);     
+                $mother     = mysqli_real_escape_string($db, $_POST['mother']);     
+                $email      = mysqli_real_escape_string($db, $_POST['email']);     
+                $phone      = mysqli_real_escape_string($db, $_POST['phone']);     
+                $status     = mysqli_real_escape_string($db, $_POST['status']);     
+                $address    = mysqli_real_escape_string($db, $_POST['address']);   
 
-            }    
+                $add_sql = "INSERT INTO students (fullname, father, mother, email, phone, status, address, join_date) VALUES ( '$name', '$father', '$mother', '$email', '$phone', '$status', '$address', now() )";   
+                $add_data = mysqli_query ( $db, $add_sql );
+
+                if ($add_data) {
+                    header("Location: index.php?do=Manage");
+                }
+                else {
+                    die("mysqli_error" . mysqli_error($db));
+                }
+
+            } 
         }
 
         else if ( $do == "Edit" ){
