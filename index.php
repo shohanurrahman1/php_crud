@@ -310,7 +310,7 @@
 
                                                 <div class="mb-3">
                                                     <div class="d-grid gap-2">
-                                                      <input type="hidden" name="update_id" value="<?php echo $id; ?>">
+                                                      <input type="hidden" name="up_id" value="<?php echo $id; ?>">
                                                       <input type="submit" name="update" class="btn btn-success" value="Update Student">
                                                     </div>
                                                 </div>
@@ -327,7 +327,26 @@
         }
 
         else if ( $do == "Update" ){
+            if (isset($_POST['update'])) {
+                $up_id      = mysqli_real_escape_string($db, $_POST['up_id']);     
+                $name       = mysqli_real_escape_string($db, $_POST['name']);     
+                $father     = mysqli_real_escape_string($db, $_POST['father']);     
+                $mother     = mysqli_real_escape_string($db, $_POST['mother']);     
+                $email      = mysqli_real_escape_string($db, $_POST['email']);     
+                $phone      = mysqli_real_escape_string($db, $_POST['phone']);     
+                $status     = mysqli_real_escape_string($db, $_POST['status']);     
+                $address    = mysqli_real_escape_string($db, $_POST['address']); 
 
+                $update_sql = "UPDATE students SET fullname='$name', father='$father', mother='$mother', email='$email', phone='$phone', status='$status', address='$address' WHERE id='$up_id' ";   
+                $update_data = mysqli_query ( $db, $update_sql );
+
+                if ($update_data) {
+                    header("Location: index.php?do=Manage");
+                }
+                else {
+                    die("mysqli_error" . mysqli_error($db));
+                }
+            }
         }
 
         else if ( $do == "Trash" ){
