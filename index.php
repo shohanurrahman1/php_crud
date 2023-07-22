@@ -292,11 +292,10 @@
                                                 <label for="">Status</label>
                                                 <select class="form-select" name="status" aria-label="">
                                                   <option>Please Select the Status</option>
-                                                  <option <?php if ($status == 1) { echo "selected"; } ?>>Active</option>
-                                                  <option <?php if ($status == 0) { echo "selected"; } ?>>InActive</option>
+                                                  <option value="1" <?php if ( $status ==1 ){echo "selected";} ?>>Active</option>
+                                                  <option value="0" <?php if ( $status ==0 ){echo "selected";} ?>>InActive</option>
                                                 </select>
                                               </div>
-
                                             </div>
 
                                             <div class="col-lg-6">                                        
